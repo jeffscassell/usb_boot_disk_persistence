@@ -50,18 +50,15 @@ How to manually create a persistent Ubuntu boot disk :)
    so do with that information what you will. These are terms that describe a
    hard drive and all the relevant parts.
 
-   Mount:
-   
+   #### Mount
    Attach a device to the system so that it can be interacted with by the user.
    It is being "mounted" to an existing part of the system.
 
-   Disk:
-   
+   #### Disk
    Readable/writable media. Can be an old hard disk drive (HDD), a new solid
    state disk (SSD), or a USB flash drive. Things like that.
 
-   Partition:
-   
+   #### Partition
    A portion of a disk. Meant to hold a file system within it. A single
    partition can take up the entire disk, but a computer's main disk usually has
    several, because there are other partitions that need to be squeezed on there
@@ -71,8 +68,7 @@ How to manually create a persistent Ubuntu boot disk :)
    free space doesn't hurt anything. Although there have been some very sneaky
    viruses that have taken up residence in little spaces like this...
 
-   File system:
-   
+   #### File system
    A way for the computer to actually read/write *files* to a partition. Yep,
    that's it. Easy! Think of it as another container, this time within the
    partition (itself a container), but this takes up the *entire* partition and
@@ -85,8 +81,7 @@ How to manually create a persistent Ubuntu boot disk :)
    values, which is just a tiny piece of what's happening when you save a new
    file to disk.
 
-   Operating system (OS):
-   
+   #### Operating system (OS)
    The stuff we all know and love (or hate). Windows, Mac OS X, Linux, etc. This
    can only exist when there is a file system to write it to disk, and a
    partition to hold that file system.
