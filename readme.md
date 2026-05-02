@@ -51,40 +51,40 @@ How to manually create a persistent Ubuntu boot disk :)
    hard drive and all the relevant parts.
 
    #### Mount
-   Attach a device to the system so that it can be interacted with by the user.
-   It is being "mounted" to an existing part of the system.
+   > Attach a device to the system so that it can be interacted with by the user.
+   > It is being "mounted" to an existing part of the system.
 
    #### Disk
-   Readable/writable media. Can be an old hard disk drive (HDD), a new solid
-   state disk (SSD), or a USB flash drive. Things like that.
+   > Readable/writable media. Can be an old hard disk drive (HDD), a new solid
+   > state disk (SSD), or a USB flash drive. Things like that.
 
    #### Partition
-   A portion of a disk. Meant to hold a file system within it. A single
-   partition can take up the entire disk, but a computer's main disk usually has
-   several, because there are other partitions that need to be squeezed on there
-   for everything to work right on the computer. Alone, without a file system, a
-   partition is just an empty container. There can exist empty space between
-   partitions for purposes of disk longevity and other optimizations, and the
-   free space doesn't hurt anything. Although there have been some very sneaky
-   viruses that have taken up residence in little spaces like this...
+   > A portion of a disk. Meant to hold a file system within it. A single
+   > partition can take up the entire disk, but a computer's main disk usually has
+   > several, because there are other partitions that need to be squeezed on there
+   > for everything to work right on the computer. Alone, without a file system, a
+   > partition is just an empty container. There can exist empty space between
+   > partitions for purposes of disk longevity and other optimizations, and the
+   > free space doesn't hurt anything. Although there have been some very sneaky
+   > viruses that have taken up residence in little spaces like this...
 
    #### File system
-   A way for the computer to actually read/write *files* to a partition. Yep,
-   that's it. Easy! Think of it as another container, this time within the
-   partition (itself a container), but this takes up the *entire* partition and
-   isn't divided into any smaller pieces. This can store an operating system
-   (it's all files), or it can be data backed up by the user (more files),
-   pretty much whatever you need. It's all just files as far as the computer is
-   concerned. But a file system is absolutely vital to perform any work that is
-   meaningful to the user on the other end of the keyboard. People like to use
-   files/directories as opposed to hexidecimal memory addresses and length
-   values, which is just a tiny piece of what's happening when you save a new
-   file to disk.
+   > A way for the computer to actually read/write *files* to a partition. Yep,
+   > that's it. Easy! Think of it as another container, this time within the
+   > partition (itself a container), but this takes up the *entire* partition and
+   > isn't divided into any smaller pieces. This can store an operating system
+   > (it's all files), or it can be data backed up by the user (more files),
+   > pretty much whatever you need. It's all just files as far as the computer is
+   > concerned. But a file system is absolutely vital to perform any work that is
+   > meaningful to the user on the other end of the keyboard. People like to use
+   > files/directories as opposed to hexidecimal memory addresses and length
+   > values, which is just a tiny piece of what's happening when you save a new
+   > file to disk.
 
    #### Operating system (OS)
-   The stuff we all know and love (or hate). Windows, Mac OS X, Linux, etc. This
-   can only exist when there is a file system to write it to disk, and a
-   partition to hold that file system.
+   > The stuff we all know and love (or hate). Windows, Mac OS X, Linux, etc. This
+   > can only exist when there is a file system to write it to disk, and a
+   > partition to hold that file system.
 
    So, to summarize:
    
@@ -117,16 +117,14 @@ How to manually create a persistent Ubuntu boot disk :)
 
 1. Mount the ISO to a loopback block device
 
-   Loopback device:
-   
-   A logical (i.e., purely virtual and doesn't actually exist) device so that
-   the computer can interact with something when it otherwise wouldn't be able
-   to.
+   #### Loopback device
+   > A logical (i.e., purely virtual and doesn't actually exist) device so that
+   > the computer can interact with something when it otherwise wouldn't be able
+   > to.
 
-   Block device:
-   
-   To skip a lot of technical jargon, you can usually think of block devices as
-   a synonym for disks, like hard drives or USBs.
+   #### Block device
+   > To skip a lot of technical jargon, you can usually think of block devices as
+   > a synonym for disks, like hard drives or USBs.
 
    Finally, we can fire up a Linux terminal and get started. We're going to
    start by mounting all the partitions within the Ubuntu ISO to our file system
@@ -142,20 +140,19 @@ How to manually create a persistent Ubuntu boot disk :)
    device.  Now we need to locate its root partition and determine the exact
    number of disk sectors it occupies.
 
-   Sector:
-   
-   A group of bytes that the disk physically reads/writes at a time. These
-   groups of bytes are contiguous, meaning they're all right next to each other
-   and not spread around randomly on the disk. Because the disk HAS to write in
-   these chunks of bytes, it's the smallest size that something can occupy on
-   the disk, and this size varies from disk type to disk type (USB, HDD, SSD,
-   etc.). This size is permanent and physically tied to the disk. To illustrate,
-   USBs usually have a sector size of 512 bytes, and that means if you write a
-   file to the disk that is smaller than 512 bytes, you're actually wasting a
-   teeny tiny bit of space, and if you write something larger then you take up
-   multiple sectors. It is possible to fill a disk with tiny files and waste a
-   lot, lot of space, but in reality this pretty much never happens unless some
-   asshole writes a virus to do it.
+   #### Sector
+   > A group of bytes that the disk physically reads/writes at a time. These
+   > groups of bytes are contiguous, meaning they're all right next to each other
+   > and not spread around randomly on the disk. Because the disk HAS to write in
+   > these chunks of bytes, it's the smallest size that something can occupy on
+   > the disk, and this size varies from disk type to disk type (USB, HDD, SSD,
+   > etc.). This size is permanent and physically tied to the disk. To illustrate,
+   > USBs usually have a sector size of 512 bytes, and that means if you write a
+   > file to the disk that is smaller than 512 bytes, you're actually wasting a
+   > teeny tiny bit of space, and if you write something larger then you take up
+   > multiple sectors. It is possible to fill a disk with tiny files and waste a
+   > lot, lot of space, but in reality this pretty much never happens unless some
+   > asshole writes a virus to do it.
 
    File systems also have their own "chunks" that they write called "blocks"
    which are a multiple of 512 bytes, like 2048 or 4096, which makes that
@@ -217,13 +214,12 @@ How to manually create a persistent Ubuntu boot disk :)
    you're intentionally trying to hide something. Now let's open the USB device
    to create the new partition table for our empty disk.
 
-   Partition table:
-   
-   A table that describes to the disk where each of its partitions are, how big
-   they are, and if they have any special flags that the computer might care
-   about for special handling. In order to create any partitions, first this
-   table needs to exist so that those partitions' details can be saved to it.
-   It's kind of like an address book.
+   #### Partition table
+   > A table that describes to the disk where each of its partitions are, how big
+   > they are, and if they have any special flags that the computer might care
+   > about for special handling. In order to create any partitions, first this
+   > table needs to exist so that those partitions' details can be saved to it.
+   > It's kind of like an address book.
 
    ``` sudo gdisk <USB_device> ```
 
@@ -237,11 +233,10 @@ How to manually create a persistent Ubuntu boot disk :)
 
 3. Boot/ESP partition
 
-   ESP:
-   
-   EFI System Partition. This is the partition that the computer will look
-   in when booting to try to find a bootloader. Bootloaders are just programs
-   that get the ball rolling when starting the computer.
+   #### ESP
+   > EFI System Partition. This is the partition that the computer will look
+   > in when booting to try to find a bootloader. Bootloaders are just programs
+   > that get the ball rolling when starting the computer.
 
    From within `gdisk`, use the command ``` n ``` to create a new partition.  It
    will prompt for the partition number, defaulting to 1. The default is fine.
@@ -343,24 +338,23 @@ How to manually create a persistent Ubuntu boot disk :)
    whole boot process off. From here, it will locate the bootloader, which does
    exactly what it sounds like (loads the necessary boot processes).
 
-   Bootloader:
-   
-   The starting process that *starts* the bootup of an operating system. The
-   bootloader will usually let you choose different options to boot into
-   different modes of an OS, such as Windows' "Safe Mode".  The default
-   bootloader file that UEFI will look for is BOOTX64.EFI.
+   #### Bootloader
+   > The starting process that *starts* the bootup of an operating system. The
+   > bootloader will usually let you choose different options to boot into
+   > different modes of an OS, such as Windows' "Safe Mode".  The default
+   > bootloader file that UEFI will look for is BOOTX64.EFI.
 
    We're going to create the bootloader and its configuration file so that we
    can customize its functionality to our preferences.
 
 1. Install GRUB
 
-   GRUB:
-   GRand Unified Bootloader. Linux's bootloader that plays nice with
-   multiple other operating systems. Super basic but reliable and customizable.
-   Usually looks for a config file (grub.cfg) for further options/instructions,
-   automatically selecting the default option after a timeout period (10-30
-   seconds, usually).
+   #### GRUB
+   > GRand Unified Bootloader. Linux's bootloader that plays nice with
+   > multiple other operating systems. Super basic but reliable and customizable.
+   > Usually looks for a config file (grub.cfg) for further options/instructions,
+   > automatically selecting the default option after a timeout period (10-30
+   > seconds, usually).
 
    To install GRUB, we need to be able to write to the USB's ESP partition,
    which means we need to mount it (i.e., attach it) to our current file
