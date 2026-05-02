@@ -51,14 +51,17 @@ How to manually create a persistent Ubuntu boot disk :)
    hard drive and all the relevant parts.
 
    Mount:
+   
    Attach a device to the system so that it can be interacted with by the user.
    It is being "mounted" to an existing part of the system.
 
    Disk:
+   
    Readable/writable media. Can be an old hard disk drive (HDD), a new solid
    state disk (SSD), or a USB flash drive. Things like that.
 
    Partition:
+   
    A portion of a disk. Meant to hold a file system within it. A single
    partition can take up the entire disk, but a computer's main disk usually has
    several, because there are other partitions that need to be squeezed on there
@@ -69,6 +72,7 @@ How to manually create a persistent Ubuntu boot disk :)
    viruses that have taken up residence in little spaces like this...
 
    File system:
+   
    A way for the computer to actually read/write *files* to a partition. Yep,
    that's it. Easy! Think of it as another container, this time within the
    partition (itself a container), but this takes up the *entire* partition and
@@ -82,6 +86,7 @@ How to manually create a persistent Ubuntu boot disk :)
    file to disk.
 
    Operating system (OS):
+   
    The stuff we all know and love (or hate). Windows, Mac OS X, Linux, etc. This
    can only exist when there is a file system to write it to disk, and a
    partition to hold that file system.
@@ -118,11 +123,13 @@ How to manually create a persistent Ubuntu boot disk :)
 1. Mount the ISO to a loopback block device
 
    Loopback device:
+   
    A logical (i.e., purely virtual and doesn't actually exist) device so that
    the computer can interact with something when it otherwise wouldn't be able
    to.
 
    Block device:
+   
    To skip a lot of technical jargon, you can usually think of block devices as
    a synonym for disks, like hard drives or USBs.
 
@@ -141,6 +148,7 @@ How to manually create a persistent Ubuntu boot disk :)
    number of disk sectors it occupies.
 
    Sector:
+   
    A group of bytes that the disk physically reads/writes at a time. These
    groups of bytes are contiguous, meaning they're all right next to each other
    and not spread around randomly on the disk. Because the disk HAS to write in
@@ -158,7 +166,7 @@ How to manually create a persistent Ubuntu boot disk :)
    which are a multiple of 512 bytes, like 2048 or 4096, which makes that
    hypothetical disk-destroying tiny files situation even more pronounced.
    
-2. Get the Exact Size of the Root Partition
+3. Get the Exact Size of the Root Partition
 
    Now we need to locate the root partition. Use ``` lsblk ``` (list block) and
    look for the loopback device that was created in the previous step. It should
@@ -215,6 +223,7 @@ How to manually create a persistent Ubuntu boot disk :)
    to create the new partition table for our empty disk.
 
    Partition table:
+   
    A table that describes to the disk where each of its partitions are, how big
    they are, and if they have any special flags that the computer might care
    about for special handling. In order to create any partitions, first this
@@ -231,9 +240,10 @@ How to manually create a persistent Ubuntu boot disk :)
    "Sector size". This is standard for USB flash drives, so unless this is an
    external hard drive we should be fine.
 
-2. Boot/ESP partition
+3. Boot/ESP partition
 
    ESP:
+   
    EFI System Partition. This is the partition that the computer will look
    in when booting to try to find a bootloader. Bootloaders are just programs
    that get the ball rolling when starting the computer.
@@ -248,7 +258,7 @@ How to manually create a persistent Ubuntu boot disk :)
    Set the partition type code to ``` ef00 ```, which is shorthand for a very,
    very long GUID code that will automatically get filled in on the partition.
 
-3. Root partition
+5. Root partition
 
    This will be the actual file system that we're going to be using, i.e.,
    Ubuntu, and where it's going to live. It will be read-only since this is a
@@ -264,7 +274,7 @@ How to manually create a persistent Ubuntu boot disk :)
    ``` +<size_in_sectors> ``` from what we found earlier (mine was 12383424).
    The default type code is fine.
 
-4. Persistence partition
+6. Persistence partition
 
    This will consume the remainder of the space on the disk and is where all the
    changes we make to the "read-only" file system will live.
@@ -280,7 +290,7 @@ How to manually create a persistent Ubuntu boot disk :)
    should now have the nice new tree structure with 3 partitions, each perfectly
    sized. :)
 
-5. Write the necessary file systems to each partition
+7. Write the necessary file systems to each partition
 
    Remember that a partition can't really do much on its own, it needs a file
    system for the OS to be able to read/write to it. For the boot
@@ -339,6 +349,7 @@ How to manually create a persistent Ubuntu boot disk :)
    exactly what it sounds like (loads the necessary boot processes).
 
    Bootloader:
+   
    The starting process that *starts* the bootup of an operating system. The
    bootloader will usually let you choose different options to boot into
    different modes of an OS, such as Windows' "Safe Mode".  The default
