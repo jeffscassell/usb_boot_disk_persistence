@@ -30,9 +30,13 @@ How to manually create a persistent Ubuntu boot disk :)
    ### LEGEND
 
    ``` text ```     A command to execute
+   
    `text`           A specific program
+   
    "text"           Just some quoted, regular old text
+   
    <text>           A required parameter (don't include the brackets <>)
+   
    [text]           An optional parameter (again, don't include the brackets [])
 
    I'm not sure I even used this last one (optional parameter), but just in
@@ -89,7 +93,9 @@ How to manually create a persistent Ubuntu boot disk :)
    So, to summarize:
 
    Disk -> Partition 1 -> File system -> Bootloader (ignition to start car)
+   
         -> Partition 2 -> File system -> Operating system (car to drive)
+        
         -> Free, unused space
 
    For each of these things (partition, file system, OS), there are different
