@@ -32,7 +32,7 @@ How to manually create a persistent Ubuntu boot disk :)
    - ``` text ```     A command to execute
    - `text`           A specific program
    - "text"           Just some quoted, regular old text
-   - <text>           A required parameter (don't include the brackets <>)
+   - \<text>           A required parameter (don't include the brackets <>)
    - [text]           An optional parameter (again, don't include the brackets [])
 
    I'm not sure I even used this last one (optional parameter), but just in
