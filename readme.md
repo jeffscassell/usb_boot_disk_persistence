@@ -275,12 +275,12 @@ How to manually create a persistent Ubuntu boot disk :)
    well.
 
    FINALLY, we can write all these changes to our disk with ``` w ```.
-   Afterwards, If you want to check out all the work we just did, use ``` lsblk
-   ``` again and check out your drive now (recall that mine was "/dev/sda"). It
-   should now have the nice new tree structure with 3 partitions, each perfectly
-   sized. :)
+   Afterwards, If you want to check out all the work we just did, use
+   ``` lsblk ``` again and check out your drive now (recall that mine was
+   "/dev/sda"). It should now have the nice new tree structure with 3
+   partitions, each perfectly sized. :)
 
-7. Write the necessary file systems to each partition
+8. Write the necessary file systems to each partition
 
    Remember that a partition can't really do much on its own, it needs a file
    system for the OS to be able to read/write to it. For the boot
